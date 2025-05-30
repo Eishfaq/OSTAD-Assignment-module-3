@@ -50,7 +50,6 @@ jobs:
 
         - name: Install PM2
           run: npm install -g pm2
-          shell: pwsh
 
         - name: Deploy with PM2
           run: |

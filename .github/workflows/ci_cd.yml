@@ -52,8 +52,9 @@ jobs:
           run: npm install -g pm2
 
         - name: Deploy with PM2
+          shell: bash
           run: |
-            try { pm2 stop app } catch { Write-Host "Ignore error: $_" }
+            pm2 stop app || true
             pm2 start index.js --name app
 
         - name: Deployment Done

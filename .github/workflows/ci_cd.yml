@@ -53,12 +53,12 @@ jobs:
 
         - name: Delete node app
           run: |
-            try { pm2 delete app } catch { Write-Host "Ignore error: $_" }
+            try { pm2 kill } catch { Write-Host "Ignore error: $_" }
 
         - name: Deploy with PM2
           shell: powershell
           run: |
-            pm2 start "./src/server.js" --name app
+            pm2 start "./src/server.js" 
 
         - name: Deployment Done
           run: |

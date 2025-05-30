@@ -51,11 +51,14 @@ jobs:
         - name: Install PM2
           run: npm install -g pm2
 
+        - name: Delete node app
+          run: |
+            try { pm2 delete node-app } catch { Write-Host "Ignore error: $_" }
+
         - name: Deploy with PM2
           shell: powershell
           run: |
-            try { pm2 stop app } catch { Write-Host "Ignore error: $_" }
-            pm2 start index.js --name app
+            pm2 start "./src/server.js" --name node-app
 
         - name: Deployment Done
           run: |

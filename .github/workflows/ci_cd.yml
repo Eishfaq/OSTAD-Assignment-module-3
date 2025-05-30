@@ -50,7 +50,7 @@ jobs:
 
         - name: Deploy with PM2
           run: |
-            pm2 stop app || exit 0
+            try { pm2 stop app } catch { Write-Host "Ignore error: $_" }
             pm2 start index.js --name app
 
         - name: Deployment Done

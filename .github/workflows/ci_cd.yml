@@ -48,6 +48,10 @@ jobs:
         - name: Install Dependencies
           run: npm install
 
+        - name: Install PM2
+          run: npm install -g pm2
+          shell: pwsh
+
         - name: Deploy with PM2
           run: |
             try { pm2 stop app } catch { Write-Host "Ignore error: $_" }
